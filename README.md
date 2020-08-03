@@ -34,6 +34,12 @@ Completar app.js.
 
 ### Específicação dos testes
 
+Sugestão, rode um teste de cada vez, a seguir um filtro pelos testes que tem create no nome, por exemplo:
+
+```
+$ yarn test --watch -t='create a new'
+```
+
 Para esse desafio temos os seguintes testes:
 
 - **`should be able to create a new repository`**: Para que esse teste passe, sua aplicação deve permitir que um repositório seja criado, e retorne um json com o projeto criado.

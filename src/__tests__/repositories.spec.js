@@ -1,22 +1,23 @@
 const request = require("supertest");
 const app = require("../app");
-const { isUuid } = require("uuidv4");
+// (node:28252) DeprecationWarning: isUuid() is deprecated. Use validate() from the uuid module instead.
+const { validate } = require("uuid");
 
 describe("Repositories", () => {
   it("should be able to create a new repository", async () => {
     const response = await request(app)
       .post("/repositories")
       .send({
-        url: "https://github.com/Rocketseat/umbriel",
-        title: "Umbriel",
+        url: "https://github.com/ramiroluz/desafio-conceitos-nodejs",
+        title: "Desafio Conceitos Nodejs",
         techs: ["Node", "Express", "TypeScript"]
       });
-
-    expect(isUuid(response.body.id)).toBe(true);
+    // (node:28252) DeprecationWarning: isUuid() is deprecated. Use validate() from the uuid module instead.
+    expect(validate(response.body.id)).toBe(true);
 
     expect(response.body).toMatchObject({
-      url: "https://github.com/Rocketseat/umbriel",
-      title: "Umbriel",
+      url: "https://github.com/ramiroluz/desafio-conceitos-nodejs",
+      title: "Desafio Conceitos Nodejs",
       techs: ["Node", "Express", "TypeScript"],
       likes: 0
     });
@@ -26,8 +27,8 @@ describe("Repositories", () => {
     const repository = await request(app)
       .post("/repositories")
       .send({
-        url: "https://github.com/Rocketseat/umbriel",
-        title: "Umbriel",
+        url: "https://github.com/ramiroluz/desafio-conceitos-nodejs",
+        title: "Desafio Conceitos Nodejs",
         techs: ["Node", "Express", "TypeScript"]
       });
 
@@ -37,8 +38,8 @@ describe("Repositories", () => {
       expect.arrayContaining([
         {
           id: repository.body.id,
-          url: "https://github.com/Rocketseat/umbriel",
-          title: "Umbriel",
+          url: "https://github.com/ramiroluz/desafio-conceitos-nodejs",
+          title: "Desafio Conceitos Nodejs",
           techs: ["Node", "Express", "TypeScript"],
           likes: 0
         }
@@ -50,8 +51,8 @@ describe("Repositories", () => {
     const repository = await request(app)
       .post("/repositories")
       .send({
-        url: "https://github.com/Rocketseat/umbriel",
-        title: "Umbriel",
+        url: "https://github.com/ramiroluz/desafio-conceitos-nodejs",
+        title: "Desafio Conceitos Nodejs",
         techs: ["Node", "Express", "TypeScript"]
       });
 
@@ -80,8 +81,8 @@ describe("Repositories", () => {
     const repository = await request(app)
       .post("/repositories")
       .send({
-        url: "https://github.com/Rocketseat/umbriel",
-        title: "Umbriel",
+        url: "https://github.com/ramiroluz/desafio-conceitos-nodejs",
+        title: "Desafio Conceitos Nodejs",
         techs: ["React", "ReactNative", "TypeScript", "ContextApi"]
       });
 
@@ -100,8 +101,8 @@ describe("Repositories", () => {
     const response = await request(app)
       .post("/repositories")
       .send({
-        url: "https://github.com/Rocketseat/umbriel",
-        title: "Umbriel",
+        url: "https://github.com/ramiroluz/desafio-conceitos-nodejs",
+        title: "Desafio Conceitos Nodejs",
         techs: ["Node", "Express", "TypeScript"]
       });
 
