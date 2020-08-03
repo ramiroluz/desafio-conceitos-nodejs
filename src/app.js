@@ -17,13 +17,16 @@ app.get("/repositories", (request, response) => {
 
 app.post("/repositories", (request, response) => {
   // (node:28252) DeprecationWarning: uuidv4() is deprecated. Use v4() from the uuid module instead.
+  const { url, title, techs } = request.body;
   const repo = {
     id: v4(),
-    url: "https://github.com/ramiroluz/desafio-conceitos-nodejs",
-    title: "Desafio Conceitos Nodejs",
-    techs: ["Node", "Express", "TypeScript"],
+    url: url,
+    title: title,
+    techs: techs,
     likes: 0
   };
+
+  repositories.push(repo);
   return response.json(repo);
 });
 
